@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
@@ -6,18 +7,21 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         function openModal(title, date, description, imageUrl) {
-            document.getElementById('modal-title').innerText = title;
-            document.getElementById('modal-date').innerText = date;
-            document.getElementById('modal-description').innerText = description;
-            document.getElementById('modal-image').src = imageUrl;
-            document.getElementById('modal').style.display = 'flex';
-        }
+    document.getElementById('modal-title').innerText = title;
+    document.getElementById('modal-date').innerText = date;
+    document.getElementById('modal-description').innerText = description;
+    document.getElementById('modal-image').src = imageUrl;
+    document.getElementById('modal').style.display = 'flex'; // Show modal
+}
 
-        function closeModal() {
-            document.getElementById('modal').style.display = 'none';
-        }
+function closeModal() {
+    document.getElementById('modal').style.display = 'none'; // Hide modal
+}
 
-        // Close modal when clicking outside of the modal content
+// Ensure modal is hidden on page load
+window.onload = function() {
+    document.getElementById('modal').style.display = 'none'; // Hide modal on load
+};
         window.onclick = function(event) {
             const modal = document.getElementById('modal');
             if (event.target === modal) {
@@ -36,7 +40,7 @@
         }
     </script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
     <style>
         body {
             background: url('https://i.pinimg.com/736x/34/e3/42/34e342001d68ff2ada627871626afaa2.jpg') no-repeat center center fixed;
@@ -85,32 +89,25 @@
             width: 100%;
             height: 100%;
             overflow: auto;
-            background-color: rgb(0,0,0);
             background-color: rgba(0,0,0,0.4);
             display: flex;
             justify-content: center;
             align-items: center;
         }
         .modal-content {
-  background-color: #fefefe;
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-  max-width: 500px;
-  border-radius: 10px;
-  position: relative;
-  text-align: justify; /* Ensure text is justified */
-}
-
-.modal-content .content-container p {
-  text-align: justify;
-  text-justify: inter-word; /* Add this property to justify text */
-}
-
+            background-color: #fefefe;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 10px;
+            position: relative;
+            text-align: justify;
+        }
         .modal-content p {
-            text-align: justify; /* Justify text */
-            margin: 10px 0; /* Add margin for spacing */
+            text-align: justify;
+            margin: 10px 0;
         }
         .close {
             color: #aaa;
@@ -124,6 +121,19 @@
             text-decoration: none;
             cursor: pointer;
         }
+        .modal-content {
+    background-color: #fefefe;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* You can keep this or adjust as needed */
+    max-width: 3xl; /* Adjusted max-width */
+    border-radius: 10px;
+    position: relative;
+    text-align: justify;
+    max-height: 80vh; /* Set a maximum height */
+    overflow-y: auto; /* Enable vertical scrolling if content exceeds max height */
+}
     </style>
 </head>
 <body class="bg-white3 font-roboto">
@@ -143,25 +153,25 @@
                 <i class="fas fa-ellipsis-h cursor-pointer hover:text-red-500"></i>
             </div>
             <div id="home" class="page active mt-4">
-                <div class="content-container text-justify">
-                    <p class="text-gray-600 text-center">Hello, I'm</p>
-                    <h1 class="font-bold text-black text-2xl text-center">Vanessa Suharly</h1>
+                <div class="content-container text-justify bg-white bg-opacity-90 rounded-lg shadow-lg p-6">
+                    <p class="text-gray-600 text-center text-lg">Hello, I'm</p>
+                    <h1 class="font-bold text-black text-3xl text-center mb-4">Vanessa Suharly</h1>
                     <div class="flex justify-center items-center space-x-4 mt-4">
                         <img alt="Vanessa Suharly profile picture" class="w-36 h-36 md:w-48 md:h-48 rounded-lg border-2 border-black hover:scale-105 transition-transform" src="./assets/about-me-square.png"/>
                         <div class="flex flex-col justify-center">
                             <div class="flex space-x-4 mt-2">
-                                <button class="p-2 rounded-lg bg-gray-300 hover:bg-gray-400 transition-colors" onclick="window.open('./assets/CV.pdf')">Resume</button>
-                                <button class="p-2 rounded-lg bg-gray-800 text-white hover:bg-gray-700 transition-colors" onclick="location.href='./#contact'">Contact Info</button>
+                                <button class="p-2 rounded-lg bg-gray-300 hover:bg-gray-400 transition-colors shadow-md" onclick="window.open('./assets/CV.pdf')">Resume</button>
+                                <button class="p-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors shadow-md" onclick="location.href='./#contact'">Contact Info</button>
                             </div>
                             <div class="flex justify-center space-x-4 mt-4">
-                                <img src="./assets/linkedin.png" alt="My LinkedIn profile" class="w-8 h-8 cursor-pointer" onclick="location.href='//www.linkedin.com/in/vanessa-suharly-370a59354/'" />
-                                <img src="./assets/github.png" alt="My Github profile" class="w-8 h-8 cursor-pointer" onclick="location.href='//github.com/Vasha17'" />
+                                <img src="./assets/linkedin.png" alt="My LinkedIn profile" class="w-8 h-8 cursor-pointer hover:scale-110 transition-transform" onclick="location.href='//www.linkedin.com/in/vanessa-suharly-370a59354/'" />
+                                <img src="./assets/github.png" alt="My Github profile" class="w-8 h-8 cursor-pointer hover:scale-110 transition-transform" onclick="location.href='//github.com/Vasha17'" />
                             </div>
                         </div>            
                     </div>
-                    <p class="mt-4">Hi, I'm Vanessa Suharly, an aspiring software engineer with a strong foundation in programming and website development. I have a passion for digital innovation, demonstrated by my experience in developing websites and building software projects. Skilled in HTML, C++, and various design tools, I excel at creating functional and user-friendly applications.</p>
-                    <p class="mt-2">As a Programmer in the Coding Club, I executed various coding projects, including website development and automation tasks. I also managed and maintained the school’s website, ensuring smooth functionality and user experience. My leadership as the Director of Academic Affairs in OSIS has strengthened my communication and teamwork skills, where I led initiatives and fostered collaboration within the academic community.</p>
-                    <p class="mt-2">I'm excited to leverage my technical and leadership experience to develop innovative solutions and contribute to the world of software engineering.</p>
+                    <p class="mt-4 text-gray-700 leading-relaxed">Hi, I'm Vanessa Suharly, an aspiring software engineer with a strong foundation in programming and website development. I have a passion for digital innovation, demonstrated by my experience in developing websites and building software projects. Skilled in HTML, C++, and various design tools, I excel at creating functional and user-friendly applications.</p>
+                    <p class="mt-2 text-gray-700 leading-relaxed">As a Programmer in the Coding Club, I executed various coding projects, including website development and automation tasks. I also managed and maintained the school’s website, ensuring smooth functionality and user experience. My leadership as the Director of Academic Affairs in OSIS has strengthened my communication and teamwork skills, where I led initiatives and fostered collaboration within the academic community.</p>
+                    <p class="mt-2 text-gray-700 leading-relaxed">I'm excited to leverage my technical and leadership experience to develop innovative solutions and contribute to the world of software engineering.</p>
                 </div>
             </div>
             <div id="experiences" class="page mt-4">
@@ -224,16 +234,15 @@
             </div>
             <div id="projects" class="page mt-4">
                 <div class="bg-white bg-opacity-75 p-4 rounded-lg mb-5">
-                    <p class="text-sm text-grey-600 mt-2 text-center font text-lg">Browse My Recent</p>
+                    <p class="text-sm text-gray-600 mt-2 text-center font text-lg">Browse My Recent</p>
                     <h1 class="text-2xl font-bold text-black text-center">Projects</h1>
                 </div>
-                <div class="experience-details-container flex justify-center gap-10 mb-10 mt-10"></div>
-                <div class="about-containers flex flex-wrap justify-center gap-5">
+                <div class="about-containers flex flex-wrap justify-center gap-5 mb-10 mt-10">
                     <div class="details-container color-container bg-gray-100 p-4 rounded-lg shadow-md cursor-pointer relative" 
                         onclick="openModal('WEATHER', 'April 2022 - June 2022', 
                         'Weather is one of my first projects, and I learned a lot from it. Through this project, I gained experience in app development, particularly in understanding how to fetch and display weather data, designing a user-friendly interface, and troubleshooting errors. I designed and coded the app myself, which helped me develop problem-solving skills and improve my logical thinking. The app was built using MIT App Inventor, making it a great introduction to mobile app development.', './assets/Project-1-me.png')" style="width: calc(11rem + 20px);">
                         <div class="article-container flex justify-center">
-                            <img src="./Assets/Project-1-me.png" alt="Project 1" class="project-img w-44 h-44"/>
+                            <img src="./assets/Project-1-me.png" alt="Project 1" class="project-img w-44 h-44"/>
                         </div>
                         <h2 class="experience-sub-title project-title text-center font-bold">WEATHER APP</h2>
                     </div>
@@ -241,7 +250,7 @@
                         onclick="openModal('CUBE', 'July 2023 - September 2023', 
                         'Cube is a video game where players must leap across platforms within a set time limit. I worked on this project with my friends, but my primary responsibility was designing the game and coding the main mechanics. My friends helped with additional coding tasks, but I was deeply involved in ensuring the game’s logic and user experience were smooth. This project taught me a lot about game physics, timing mechanisms, and the importance of collaborative work in game development. We built CUBE using Scratch, which made it easy to visualize and implement game logic.', './assets/Project-2-me.png')" style="width: calc(11rem + 20px);">
                         <div class="article-container flex justify-center">
-                            <img src="./Assets/Project-2-me.png" alt="Project 2" class="project-img w-44 h-44"/>
+                            <img src="./assets/Project-2-me.png" alt="Project 2" class="project-img w-44 h-44"/>
                         </div>
                         <h2 class="experience-sub-title project-title text-center font-bold">CUBE APP</h2>
                     </div>
@@ -249,89 +258,68 @@
                         onclick="openModal('OFFICIAL WEBSITE', 'August 2024 - Present', 
                         'Until today, I have been actively involved in developing and managing my school’s official website as part of a team. This experience has been incredibly valuable, as I have learned about teamwork, brainstorming ideas, and problem-solving in a collaborative environment. Working with a team has also taught me how to handle different perspectives and integrate feedback effectively. Additionally, I have gained experience in data analysis by managing website traffic and improving user engagement. Since the website is built using HTML, I have improved my front-end development skills while understanding how a structured website functions in a real-world setting.', './assets/Project-3-me.png')" style="width: calc(11rem + 20px);">
                         <div class="article-container flex justify-center">
-                            <img src="./Assets/Project-3-me.png" alt="Project 3" class="project-img w-44 h-44"/>
+                            <img src="./assets/Project-3-me.png" alt="Project 3" class="project-img w-44 h-44"/>
                         </div>
                         <h2 class="experience-sub-title project-title text-center font-bold">OFFICIAL SCHOOL WEBSITE</h2>
                     </div>
-                    <!-- Project Cards -->
-<div class="about-containers flex flex-wrap justify-center gap-5">
-    <div class="details-container color-container bg-gray-100 p-4 rounded-lg shadow-md cursor-pointer relative" style="width: calc(11rem + 20px);">
-        <div class="article-container flex justify-center">
-            <img src="./Assets/Project-1-me.png" alt="Project 1" class="project-img w-44 h-44"/>
-        </div>
-        <h2 class="experience-sub-title project-title text-center font-bold">WEATHER APP</h2>
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onclick="openModal('WEATHER', 'April 2022 - June 2022', 'Weather is one of my first projects, and I learned a lot from it. Through this project, I gained experience in app development, particularly in understanding how to fetch and display weather data, designing a user-friendly interface, and troubleshooting errors. I designed and coded the app myself, which helped me develop problem-solving skills and improve my logical thinking. The app was built using MIT App Inventor, making it a great introduction to mobile app development.', './assets/Project-1-me.png')">View Details</button>
-    </div>
-    <div class="details-container color-container bg-gray-100 p-4 rounded-lg shadow-md cursor-pointer relative" style="width: calc(11rem + 20px);">
-        <div class="article-container flex justify-center">
-            <img src="./Assets/Project-2-me.png" alt="Project 2" class="project-img w-44 h-44"/>
-        </div>
-        <h2 class="experience-sub-title project-title text-center font-bold">CUBE APP</h2>
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onclick="openModal('CUBE', 'July 2023 - September 2023', 'Cube is a video game where players must leap across platforms within a set time limit. I worked on this project with my friends, but my primary responsibility was designing the game and coding the main mechanics. My friends helped with additional coding tasks, but I was deeply involved in ensuring the game’s logic and user experience were smooth. This project taught me a lot about game physics, timing mechanisms, and the importance of collaborative work in game development. We built CUBE using Scratch, which made it easy to visualize and implement game logic.', './assets/Project-2-me.png')">View Details</button>
-    </div>
-    <div class="details-container color-container bg-gray-100 p-4 rounded-lg shadow-md cursor-pointer relative" style="width: calc(11rem + 20px);">
-        <div class="article-container flex justify-center">
-            <img src="./Assets/Project-3-me.png" alt="Project 3" class="project-img w-44 h-44"/>
-        </div>
-        <h2 class="experience-sub-title project-title text-center font-bold">OFFICIAL SCHOOL WEBSITE</h2>
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onclick="openModal('OFFICIAL WEBSITE', 'August 2024 - Present', 'Until today, I have been actively involved in developing and managing my school’s official website as part of a team. This experience has been incredibly valuable, as I have learned about teamwork, brainstorming ideas, and problem-solving in a collaborative environment. Working with a team has also taught me how to handle different perspectives and integrate feedback effectively. Additionally, I have gained experience in data analysis by managing website traffic and improving user engagement. Since the website is built using HTML, I have improved my front-end development skills while understanding how a structured website functions in a real-world setting.', './assets/Project-3-me.png')">View Details</button>
-    </div>
-</div>
                 </div>
             </div>
 
-            <!-- Modal Structure -->
-            <div id="modal" class="modal">
-                <div class="modal-content">
-                    <span class="close" onclick="closeModal()">&times;</span>
-                    <h2 id="modal-title" class="text-center"></h2>
-                    <p id="modal-date" class="text-center"></p>
-                    <p id="modal-description" class="text-justify"></p>
-                    <img id="modal-image" src="" alt="Project Image" style="width: 100%; height: auto; margin-top: 10px;"/>
-                </div>
-            </div>
-           <!-- Article Container -->
-<div class="article-container flex justify-center">
-    <img src="./Assets/Project-3-me.png" alt="Project 3" class="project-img w-44 h-44" />
-  </div>
-  <h2 class="experience-sub-title project-title text-center font-bold">OFFICIAL SCHOOL WEBSITE</h2>
-  
-  <!-- Modal Structure -->
-  <div id="modal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal()">&times;</span>
-      <h2 id="modal-title" class="text-center"></h2>
-      <p id="modal-date" class="text-center"></p>
-      <p id="modal-description" class="text-justify"></p>
-      <img id="modal-image" src="" alt="Project Image" style="width: 100%; height: auto; margin-top: 10px;" />
-    </div>
-  </div>
-  
-  <!-- Contact Section -->
-  <div id="contact" class="page mt-4">
-    <div class="section-header">
-      <div class="bg-white bg-opacity-75 p-4 rounded-lg mb-4">
-        <p class="text-sm text-gray-600 mt-2 text-center font text-lg">Get in Touch</p>
-        <h1 class="text-2xl font-bold text-black text-center">Contact Me</h1>
-      </div>
-      <div class="contact-info-upper-container">
-        <div class="contact-info-container">
-          <img src="./Assets/email.png" alt="Email icon" class="icon contact-icon email-icon" />
-          <p><a href="mailto:vanessa.sha75@gmail.com">Vanessa.sha75@gmail.com</a></p>
-        </div>
-        <div class="contact-info-container">
-          <img src="./Assets/linkedin.png" alt="LinkedIn icon" class="icon contact-icon" />
-        </div>
-        <div class="bookmark-nav flex justify-around text-black font-bold">
-            <a class="text-center py-2 cursor-pointer hover:text-gray-600 transition-all" onclick="showPage('home')">Home</a>
-            <a class="text-center py-2 cursor-pointer hover:text-gray-600 transition-all" onclick="showPage('experiences')">Experiences</a>
-            <a class="text-center py-2 cursor-pointer hover:text-gray-600 transition-all" onclick="showPage('projects')">Projects</a>
-            <a class="text-center py-2 cursor-pointer hover:text-gray-600 transition-all" onclick="showPage('contact')">Contact</a>
-        </div>
+       <!-- Modal Structure -->
+<div id="modal" class="modal">
+    <div class="modal-content w-full max-w-3xl mx-auto"> <!-- Added mx-auto for horizontal centering -->
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2 id="modal-title" class="text-center text-xl font-bold mb-2"></h2> <!-- Centered title -->
+        <p id="modal-date" class="text-center text-sm text-gray-600 mb-4"></p> <!-- Centered date -->
+        <p id="modal-description" class="text-justify mb-4"></p> <!-- Justified description -->
+        <img id="modal-image" src="" alt="Project Image" class="w-full h-auto rounded-lg" style="margin-top: 10px;"/>
     </div>
 </div>
-        </div>
-    </div>
+            </div>
+            <div id="contact" class="page mt-4 pb-16"> <!-- Added padding-bottom to the contact section -->
+                <div class="section-header">
+                    <div class="bg-white bg-opacity-75 p-4 rounded-lg mb-4">
+                        <p class="text-sm text-gray-600 mt-2 text-center font text-lg">Get in Touch</p>
+                        <h1 class="text-2xl font-bold text-black text-center">Contact Me</h1>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="bg-white shadow-md rounded-lg p-6 mb-6 w-full max-w-md">
+                        <h2 class="text-xl font-semibold text-center mb-4">Contact Information</h2>
+                        <div class="flex items-center mb-4">
+                            <img src="./assets/email.png" alt="Email icon" class="w-6 h-6 mr-2" />
+                            <p class="text-gray-700"><a href="mailto:vanessa.sha75@gmail.com" class="hover:underline">Vanessa.sha75@gmail.com</a></p>
+                        </div>
+                        <div class="flex items-center mb-4">
+                            <img src="./assets/linkedin.png" alt="LinkedIn icon" class="w-6 h-6 mr-2" />
+                            <p class="text-gray-700"><a href="//www.linkedin.com/in/vanessa-suharly-370a59354/" class="hover:underline">LinkedIn Profile</a></p>
+                        </div>
+                        <div class="flex items-center mb-4">
+                            <img src="./assets/github.png" alt="GitHub icon" class="w-6 h-6 mr-2" />
+                            <p class="text-gray-700"><a href="//github.com/Vasha17" class="hover:underline">GitHub Profile</a></p>
+                        </div>
+                    </div>
+            
+                    <div class="bg-white shadow-md rounded-lg p-6 w-full max-w-md mb-12"> <!-- Increased bottom margin -->
+                        <h2 class="text-xl font-semibold text-center mb-4">Send Me a Message</h2>
+                        <form action="#" method="POST">
+                            <div class="mb-4">
+                                <label for="name" class="block text-gray-700">Name</label>
+                                <input type="text" id="name" name="name" required class="border border-gray-300 rounded-lg w-full p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                            </div>
+                            <div class="mb-4">
+                                <label for="email" class="block text-gray-700">Email</label>
+                                <input type="email" id="email" name="email" required class="border border-gray-300 rounded-lg w-full p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                            </div>
+                            <div class="mb-4">
+                                <label for="message" class="block text-gray-700">Message</label>
+                                <textarea id="message" name="message" rows="4" required class="border border-gray-300 rounded-lg w-full p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                            </div>
+                            <button type="submit" class="bg-blue-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-200">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
     <div class="bookmark-nav flex justify-around text-black font-bold fixed bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-md p-4">
         <a class="text-center py-2 cursor-pointer hover:text-gray-600 transition-all" onclick="showPage('home')">Home</a>
         <a class="text-center py-2 cursor-pointer hover:text-gray-600 transition-all" onclick="showPage('experiences')">Experiences</a>
